@@ -1,0 +1,29 @@
+[33mcommit bdb78b6cc3583403bdc08925e750fca00c15ec58[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Gadiel <gadi77altair.gabg@gmail.com>
+Date:   Thu Sep 12 15:35:27 2019 -0400
+
+    agregar base de datos
+
+[33mcommit 360d3f478a7b23e115c8768b04d77d9df537e199[m
+Author: Gadiel <gadi77altair.gabg@gmail.com>
+Date:   Thu Sep 12 02:53:02 2019 -0400
+
+    modificacion del main, cambio de nombre de la clase
+
+[33mcommit 315a22793ac71aeaefaa23669a7d7f5744173d29[m
+Author: Gadiel <gadi77altair.gabg@gmail.com>
+Date:   Thu Sep 12 02:39:22 2019 -0400
+
+    creacion de interfaz repositorio_personal
+
+[33mcommit 687283298ed2ba09ee8c35ce06284e113ca2281c[m
+Author: Gadiel <gadi77altair.gabg@gmail.com>
+Date:   Thu Sep 12 02:24:27 2019 -0400
+
+    creando clase personal
+
+[33mcommit 2f1bf2cb6aee6a06845f727c9042c15a8cfffeae[m
+Author: Gadiel <gadi77altair.gabg@gmail.com>
+Date:   Thu Sep 12 02:10:21 2019 -0400
+
+    primer commit
