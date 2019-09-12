@@ -8,15 +8,15 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-class personal {
+class Personal {
     private @Id @GeneratedValue Long id;
     private String name;
     private String puesto;
     private String turno;
 
-    personal(){}
+    Personal(){}
 
-    personal(String name, String puesto, String turno) {
+    Personal(String name, String puesto, String turno) {
         this.name = name;
         this.puesto = puesto;
         this.turno = turno;

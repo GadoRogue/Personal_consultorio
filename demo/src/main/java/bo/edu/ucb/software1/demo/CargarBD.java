@@ -13,8 +13,8 @@ public class CargarBD {
     @Bean
     CommandLineRunner initDataBase (Repositorio_personal repositorio){
         return args ->{
-          log.info("Precargado"+ repositorio.save(new personal("Juan Perez","Pasante","manana")));
-          log.info("Precargado"+ repositorio.save(new personal("Maria Flores", "Secretaria", "tarde")));
+          log.info("Precargado"+ repositorio.save(new Personal("Juan Perez","Pasante","manana")));
+          log.info("Precargado"+ repositorio.save(new Personal("Maria Flores", "Secretaria", "tarde")));
         };
     }
 }
