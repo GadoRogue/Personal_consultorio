@@ -1,8 +1,14 @@
 package bo.edu.ucb.software1.demo;
 
+import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.hateoas.core.DummyInvocationUtils.methodOn;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
 public class ControladorPersonal {
@@ -14,20 +20,24 @@ public class ControladorPersonal {
     }
     //agregar ruta
     @GetMapping("/personal")
-    List<personal> all(){
-        return repositorio.findAll();
+    Resources<org.springframework.hateoas.Resource<Personal>> all(){
+        List<Resource<Personal>> personas = repositorio.findAll().stream().map(personal -> new Resource<>(personal,
+                                    linkTo(methodOn(ControladorPersonal.class).one(personal.getId())).withSelfRel(),
+                                    linkTo(methodOn(ControladorPersonal.class).all()).withSelfRel("personal"))).collect(Collectors.toList());
+
+        return new Resources<>(personas, linkTo(methodOn(ControladorPersonal.class).all()).withSelfRel());
     }
-    @PostMapping("/personal")
-    personal nuevoper(@RequestBody personal nuevoper){
-        return repositorio.save(nuevoper);
-    }
+
     //unico objeto
     @GetMapping("/personal/{id}")
-    personal uno(@PathVariable Long id){
-        return repositorio.findById(id).orElseThrow(() -> new PersonalNoEncontrado(id));
+    org.springframework.hateoas.Resource<Personal> one(@PathVariable Long id){
+        Personal persona = repositorio.findById(id).orElseThrow(() -> new PersonalNoEncontrado(id));
+        return new Resources<>(persona,
+                linkTo(methodOn(ControladorPersonal.class).one(id)).withSelfRel(),
+                linkTo(methodOn(ControladorPersonal.class).all()).withRel("personal"));
     }
     @PutMapping("/personal{id}")
-    personal reemplazarPersonal (@RequestBody personal nuevoper, @PathVariable Long id){
+    Personal reemplazarPersonal (@RequestBody Personal nuevoper, @PathVariable Long id){
         return repositorio.findById(id).map(personal -> {personal.setName(nuevoper.getName());
                                                         personal.setPuesto(nuevoper.getPuesto());
                                                         personal.setTurno(nuevoper.getTurno());
